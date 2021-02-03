@@ -8,6 +8,8 @@ import Footer from './components/Footer.js';
 import CreateButton from './components/CreateButton.js';
 import data from './data/fakeItems.json';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -22,7 +24,7 @@ function App() {
           <CreateButton/>
         </Col>
       </Row>
-      <Row className="mt-2 mb-2">
+      <Row className="mt-2 mb-2 thing">
         <Col>
           <List data={data}/>
         </Col>
