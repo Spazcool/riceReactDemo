@@ -1,6 +1,15 @@
 
 [ 
     {
+      "id" : 1,
+      "name" : "dog",
+      "category" : "pets",
+      "quantity" : 1,
+      "price" : 3.5,
+      "pending" : true
+    },  
+    {
+      "id" : 2,
       "name" : "cat",
       "category" : "pets",
       "quantity" : 1,
@@ -8,6 +17,7 @@
       "pending" : true
     },
     {
+      "id" : 3,
       "name" : "playstation",
       "category" : "entertainment",
       "quantity" : 3,
@@ -15,13 +25,23 @@
       "pending" : false
     },   
     {
+      "id" : 4,
       "name" : "beer",
       "category" : "food",
       "quantity" : 1500,
       "price" : 2,
       "pending" : true
-    },   
+    },
     {
+      "id" : 5,
+      "name" : "gerbil",
+      "category" : "pets",
+      "quantity" : 1,
+      "price" : 0.5,
+      "pending" : true
+    },
+    {
+      "id" : 6,
       "name" : "paint",
       "category" : "home",
       "quantity" : 3,
