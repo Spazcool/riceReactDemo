@@ -4,25 +4,29 @@
       "name" : "cat",
       "category" : "pets",
       "quantity" : 1,
-      "price" : 1.5 
+      "price" : 1.5,
+      "pending" : true
     },
     {
       "name" : "playstation",
       "category" : "entertainment",
       "quantity" : 3,
-      "price" : 5 
+      "price" : 5,
+      "pending" : false
     },   
     {
       "name" : "beer",
       "category" : "food",
       "quantity" : 1500,
-      "price" : 2
+      "price" : 2,
+      "pending" : true
     },   
     {
       "name" : "paint",
       "category" : "home",
       "quantity" : 3,
-      "price" : 30 
+      "price" : 30,
+      "pending" : false
     }
 ]
 
