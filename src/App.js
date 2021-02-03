@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,22 +13,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+  const [items, setItems] = useState(data);
+
   const togglePending = (e) => {
     const rowID = e.target.parentElement.id.substring(4);
-
-    // const item = data.filter(datum => datum.id === parseInt(rowID))[0];
-
-    // item.pending = !item.pending;
-
-    data.forEach(item => {
+    const modded = items.map(item => {
       if(item.id === parseInt(rowID)){
         item.pending = !item.pending;
       }
+      return item;
     })
-
-    console.log(data)
-    // console.log(item)
-    // console.log('clicked ', e.target.parentElement) // gives me the row 
+    setItems(modded)
   }
 
   return (
