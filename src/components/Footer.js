@@ -6,15 +6,13 @@ import '../App.css';
 
 function Footer(){
   return(        
-    <Container fluid className="App-header">
-      <Row className="mb-2">
-        <Col >
-          <nav >
-            <span>Footer</span>
-          </nav>
-        </Col>
-      </Row>
-    </Container>
+    <footer className="footer">
+      <div className="container">
+        <span className="text-muted">
+          some footer text goes here
+        </span>
+      </div>
+    </footer>
   )
 }
 

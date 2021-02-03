@@ -1,18 +1,27 @@
 
 import React from 'react';
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
 import '../App.css';
 
-function List(){
+function List(props){
+
+  const createRow = (datum, index, term) => {
+    const att = Object.keys(datum);
+    const cells = att.map((cell) => (
+      <td key={`${cell}-cell-${index}`}>{datum[cell] === undefined ? 'X' : datum[cell]}</td>
+    ));
+
+    return (  
+      <tr>
+        {cells}
+      </tr>
+    )
+  }
+
   return(        
     <Table striped bordered hover>
       <thead>
-        <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
-        </tr>
+        {createRow(Object.keys(props.data[0]))}
       </thead>
       <tbody>
         <tr>
