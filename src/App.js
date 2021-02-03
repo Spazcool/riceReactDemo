@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -24,7 +24,22 @@ function App() {
       return item;
     })
     setItems(modded)
-  }
+  };
+
+  const addItem = () => {
+    let modded = [...items];
+    const newItem = {
+      "id" : 8,
+      "name" : "monkey",
+      "category" : "pets",
+      "quantity" : 1,
+      "price" : 50,
+      "pending" : true
+    };
+    modded.push(newItem);
+    console.log(modded)
+    setItems(modded);
+  };
 
   return (
     <div className="App">
@@ -35,13 +50,15 @@ function App() {
           <SearchBar/>
         </Col>
         <Col>
-          <CreateButton/>
+          <CreateButton
+            addItem={addItem}
+          />
         </Col>
       </Row>
       <Row className="mt-2 mb-2 thing">
         <Col>
           <List 
-            data={data}
+            data={items}
             togglePending={togglePending}
           />
         </Col>

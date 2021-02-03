@@ -2,9 +2,9 @@
 import React from 'react';
 import '../App.css';
 
-function CreateButton(){
+function CreateButton(props){
   return(
-    <button>Create Stuff</button>
+    <button onClick={() => props.addItem()}>Add Item</button>
   )
 }
 

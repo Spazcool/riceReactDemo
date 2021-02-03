@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Tables from 'react-bootstrap/Table';
 import '../App.css';
 
@@ -27,13 +27,14 @@ function List(props){
     const prices = arr.map((el) => el.price);
     const sum = prices.reduce((a, b) => a + b);
     return sum;
-  }
+  };
 
   // make category, quantity & price editble text fields
   const pending = props.data.filter((el) => el.pending === true).map((el)=> createRow(el)); //{/* NEED TO APPLY THE SORT ON THE EL.NAME BEFORE CALLING THE MAP */}
   const crossedOff = props.data.filter((el) => el.pending === false).map((el)=> createRow(el));
   const pendingTotal = sumPending(props.data.filter((el) => el.pending === true));
   const halfTableWidth = Object.keys(props.data[0]).length / 2;
+
   return(
     <>
       <h4>Pending</h4>
