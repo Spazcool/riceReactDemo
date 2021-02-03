@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,14 +6,14 @@ import List from './components/List.js';
 import Header from './components/Header.js';
 import SearchBar from './components/SearchBar.js'
 import Footer from './components/Footer.js';
-import CreateButton from './components/CreateButton.js';
+import CreateItem from './components/CreateItem.js';
 import data from './data/fakeItems.json';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
   const [items, setItems] = useState(data);
+  const [item, setItem] = useState('');
 
   const togglePending = (e) => {
     const rowID = e.target.parentElement.id.substring(4);
@@ -27,18 +27,21 @@ function App() {
   };
 
   const addItem = () => {
-    let modded = [...items];
+
     const newItem = {
-      "id" : 8,
-      "name" : "monkey",
-      "category" : "pets",
-      "quantity" : 1,
-      "price" : 50,
+      "id" : items.length + 1,
+      "name" : item,
+      "category" : "",
+      "quantity" : 0,
+      "price" : 0,
       "pending" : true
     };
-    modded.push(newItem);
-    console.log(modded)
-    setItems(modded);
+
+    setItems([...items, newItem]);
+  };
+
+  const handleInputChange = (e) => {
+    setItem(e.target.value);
   };
 
   return (
@@ -50,7 +53,9 @@ function App() {
           <SearchBar/>
         </Col>
         <Col>
-          <CreateButton
+          <CreateItem
+            newItemTerm={item}
+            handleInputChange={handleInputChange}
             addItem={addItem}
           />
         </Col>
