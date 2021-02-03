@@ -12,6 +12,7 @@ function CreateItem(props){
         onChange={props.handleInputChange}
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        placeholder="Milk Shake"
       />
       <button onClick={() => props.addItem()}>Add Item</button>
     </InputGroup>

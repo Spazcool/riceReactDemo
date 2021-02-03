@@ -14,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [items, setItems] = useState(data);
   const [item, setItem] = useState('');
+  const [term, setTerm] = useState('');
 
   const togglePending = (e) => {
     const rowID = e.target.parentElement.id.substring(4);
@@ -27,7 +28,6 @@ function App() {
   };
 
   const addItem = () => {
-
     const newItem = {
       "id" : items.length + 1,
       "name" : item,
@@ -38,10 +38,15 @@ function App() {
     };
 
     setItems([...items, newItem]);
+    setItem('');
   };
 
   const handleInputChange = (e) => {
     setItem(e.target.value);
+  };
+
+  const handleTermChange = (e) => {
+    setTerm(e.target.value);
   };
 
   return (
@@ -50,7 +55,10 @@ function App() {
     <Container className="wrapper">
       <Row className="mt-2 mb-2">
         <Col>
-          <SearchBar/>
+          <SearchBar
+            searchTerm={term}
+            handleTermChange={handleTermChange}
+          />
         </Col>
         <Col>
           <CreateItem
@@ -65,6 +73,7 @@ function App() {
           <List 
             data={items}
             togglePending={togglePending}
+            searchTerm={term}
           />
         </Col>
       </Row>

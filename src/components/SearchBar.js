@@ -1,9 +1,19 @@
 import React from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import '../App.css';
 
-function SearchBar(){
+function SearchBar(props){
   return(        
-    <span className="searchbar">search bar</span>
+    <InputGroup className="mb-3 search">
+      <FormControl
+        value={props.searchTerm}
+        onChange={props.handleTermChange}
+        aria-label="Default"
+        aria-describedby="inputGroup-sizing-default"
+        placeholder="Search Items"
+      />
+    </InputGroup>
   )
 }
 
