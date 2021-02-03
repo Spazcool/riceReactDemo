@@ -22,7 +22,12 @@ AC:
 * Pending items should be grouped by category, while crossed off items remain in one list
 
 *Bonus*
-*check against null value before creating new item
+* check against null value before creating new item
 * show which column is sorted with chevron
 * allow non default columns to sort
+* delete row
 * styling overhaul
+
+*Areas of Concern*
+* duplicated/redundant functions (eg. handleInputChange in App.js)
+* mobile friendliness is lacking

@@ -6,14 +6,30 @@ import '../App.css';
 function List(props){
   const createRow = (datum, index, header) => {
     const att = Object.keys(datum);
-    const cells = att.map((cell) => (
+    const cells = att.map((cell) => {
+      console.log(cell)
+      if(cell === 'quantity' || cell === 'price'){
+        return(
+          <td key={`${cell}-cell-${index}`}>
+            <input type="number" id="tentacles" name="tentacles" min="0" max="1000" value={datum[cell]}></input>
+          </td>
+        )
+      }else if(cell === 'category'){
+        return(
+          <td key={`${cell}-cell-${index}`}>
+            <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10" value={datum[cell]}/>
+          </td>
+        )
+      }
+      return (
         <td key={`${cell}-cell-${index}`}>
           {
             datum[cell] === undefined || datum[cell] === false ? 'X' :
             datum[cell] === true ? '✓' : highlightText(datum[cell], props.searchTerm)
           }
         </td>
-      ));
+      )
+    });
 
       return (  
       <tr onClick={(event) => props.togglePending(event)} id={`row-${datum.id}`} key={`row-${datum.id}`}>
@@ -23,9 +39,12 @@ function List(props){
   }
 
   const sumPending = (arr) => {
-    const prices = arr.map((el) => el.price);
-    const sum = prices.reduce((a, b) => a + b);
-    return sum;
+    if(arr.length){
+      const prices = arr.map((el) => el.price);
+      const sum = prices.reduce((a, b) => a + b);
+      return sum;
+    }
+   return 0;
   };
 
   const includesSearchTerm = (obj, term) => {
@@ -65,14 +84,15 @@ function List(props){
     return highlighted;
   }
 
-  // make category, quantity & price editble text fields
   const pending = props.data
     .filter((el) => el.pending === true && includesSearchTerm(el, props.searchTerm))
-    .sort((a , b) => a.category > b.category ? 1 : -1)
+    .sort((a , b) => {
+      if(a == true && b == true) {return a.category > b.category ? 1 : -1} return 0;})
     .map((el)=> createRow(el));
   const crossedOff = props.data
     .filter((el) => el.pending === false && includesSearchTerm(el, props.searchTerm))
-    .sort((a , b) => a.name > b.name ? 1 : -1)
+    .sort((a , b) => {
+      if(a == true && b == true){ return a.name > b.name ? 1 : -1} return 0;})
     .map((el)=> createRow(el));
   const pendingTotal = sumPending(props.data.filter((el) => el.pending === true && includesSearchTerm(el, props.searchTerm)));
   const halfTableWidth = Object.keys(props.data[0]).length / 2;
