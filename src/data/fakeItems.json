@@ -1,0 +1,28 @@
+
+[ 
+    {
+      "name" : "cat",
+      "category" : "pets",
+      "quantity" : 1,
+      "price" : 1.5 
+    },
+    {
+      "name" : "playstation",
+      "category" : "entertainment",
+      "quantity" : 3,
+      "price" : 5 
+    },   
+    {
+      "name" : "beer",
+      "category" : "food",
+      "quantity" : 1500,
+      "price" : 2
+    },   
+    {
+      "name" : "paint",
+      "category" : "home",
+      "quantity" : 3,
+      "price" : 30 
+    }
+]
+
