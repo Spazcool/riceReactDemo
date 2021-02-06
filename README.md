@@ -1,5 +1,9 @@
 # Rice University Shopping List in React
 
+<p align="center">
+   <img width="60%" height="350vh" src="./rice.gif"/>
+</p>
+
 AC: 
 
 *Components*
