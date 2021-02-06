@@ -1,5 +1,5 @@
-
-import React, { useEffect } from 'react';
+ /* eslint-disable */
+import React from 'react';
 import Tables from 'react-bootstrap/Table';
 import '../App.css';
 
@@ -7,17 +7,26 @@ function List(props){
   const createRow = (datum, index, header) => {
     const att = Object.keys(datum);
     const cells = att.map((cell) => {
-      console.log(cell)
       if(cell === 'quantity' || cell === 'price'){
         return(
           <td key={`${cell}-cell-${index}`}>
-            <input type="number" id="tentacles" name="tentacles" min="0" max="1000" value={datum[cell]}></input>
+            <input 
+              type="number"
+              key={`${cell}-${index}-input`}
+              min="0"
+              max="1000"
+              value={datum[cell]}
+              onChange={(e) => props.handleEditableFields(e, cell, datum.id)}/>
           </td>
         )
       }else if(cell === 'category'){
         return(
           <td key={`${cell}-cell-${index}`}>
-            <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10" value={datum[cell]}/>
+            <input
+              type="text"
+              key={``}
+              value={datum[cell]}
+              onChange={(e) => props.handleEditableFields(e, cell, datum.id)}/>
           </td>
         )
       }

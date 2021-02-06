@@ -41,6 +41,17 @@ function App() {
     setItem('');
   };
 
+  const handleEditableFields = (e, dataType, id) => {
+    let tempItems = [...items];
+    tempItems.forEach(item => {
+      if(item.id === id){
+        item[dataType] = e.target.value;
+      }
+    });
+
+    setItems([...tempItems]);
+  };
+
   const handleInputChange = (e) => {
     setItem(e.target.value);
   };
@@ -74,6 +85,7 @@ function App() {
             data={items}
             togglePending={togglePending}
             searchTerm={term}
+            handleEditableFields={handleEditableFields}
           />
         </Col>
       </Row>
