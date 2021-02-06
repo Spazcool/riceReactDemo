@@ -50,7 +50,7 @@ function List(props){
   const sumPending = (arr) => {
     if(arr.length){
       const prices = arr.map((el) => el.price);
-      const sum = prices.reduce((a, b) => a + b);
+      const sum = prices.reduce((a, b) => parseFloat(a) + parseFloat(b));
       return sum;
     }
    return 0;
